@@ -5,6 +5,7 @@ import org.fasttrackit.curs18.homework.model.Transaction;
 import org.fasttrackit.curs18.homework.model.client.TransactionFilter;
 import org.fasttrackit.curs18.homework.service.TransactionService;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,5 +20,10 @@ public class TransactionController {
     @GetMapping
     public List<Transaction> getAll(TransactionFilter filter){
         return service.getAll(filter);
+    }
+
+    @GetMapping("{id}")
+    public Transaction getById(@PathVariable Long id) {
+        return service.getById(id);
     }
 }
